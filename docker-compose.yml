@@ -45,5 +45,5 @@ services:
     links:
       - php
     volumes:
-      - './conf/server.conf:/etc/nginx/conf.d/default.conf'
+      - './conf:/etc/nginx/conf.d'
       - './src/public:/var/www/html/public:cached'
