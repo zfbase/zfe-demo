@@ -22,6 +22,9 @@ services:
     depends_on:
       - mysql
       - sphinx
+    links:
+      - mysql
+      - sphinx
     build: .
     user: '1000' # somebody from host machine to prevents messing up permission on /data/mysql volume
     volumes:
