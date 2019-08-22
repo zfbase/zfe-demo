@@ -2,11 +2,13 @@ version: '3'
 services:
   sphinx:
     image: macbre/sphinxsearch
+    user: '1000' # somebody from host machine to prevents messing up permission on /data/mysql volume
     volumes:
       - './data/sphinx:/opt/sphinx/index:delegated'
       - './conf/sphinx.conf:/opt/sphinx/conf/sphinx.conf'
   mysql:
     image: 'mysql:5.6'
+    user: '1000' # somebody from host machine to prevents messing up permission on /data/mysql volume
     volumes:
       - './conf/my.cnf:/etc/mysql/conf.d/z.cnf'
       - './data/mysql:/var/lib/mysql:delegated'
@@ -21,6 +23,7 @@ services:
       - mysql
       - sphinx
     build: .
+    user: '1000' # somebody from host machine to prevents messing up permission on /data/mysql volume
     volumes:
       - './data/app:/var/www/data:delegated'
       - './src:/var/www/html:cached'
