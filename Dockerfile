@@ -10,7 +10,7 @@ RUN apt-get -qq update \
 
 WORKDIR /var/www/html/
 
-COPY ./src/package*.json ./
+#COPY ./src/package*.json ./
 #RUN npm install npm@latest -g \
 #    && npm install --only=production \
 #    && npm run build \
