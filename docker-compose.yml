@@ -4,7 +4,7 @@ services:
 
   sphinx:
     image: macbre/sphinxsearch
-    user: '1000' # somebody from host machine to prevents messing up permission on /data/mysql volume
+    #user: '1000' # somebody from host machine to prevents messing up permission on /data/sphinx volume
     volumes:
       - './data/sphinx:/opt/sphinx/index:delegated'
       - './conf/sphinx.conf:/opt/sphinx/conf/sphinx.conf'
@@ -31,7 +31,6 @@ services:
       - mysql
       - sphinx
     build: .
-    user: '1000' # somebody from host machine to prevents messing up permission on /data/mysql volume
     volumes:
       - './data/app:/var/www/data:delegated'
       - './src:/var/www/html:cached'

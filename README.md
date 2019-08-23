@@ -1,2 +1,6 @@
-#ZFE Demonstration
-Hello, World! I'll write this later! :)
+# ZFE Demo
+
+Используем докер:
+```bash
+./docker.sh
+```

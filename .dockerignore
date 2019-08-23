@@ -1,3 +1,4 @@
-src/*
-!src/package*.json
-!src/composer*
+src/node_modules
+src/vendor
+src/build
+data/*

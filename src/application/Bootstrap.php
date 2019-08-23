@@ -47,8 +47,6 @@ class Bootstrap extends ZFE_Bootstrap
             $config
         );
 
-        var_dump($config);die;
-
         return $config;
     }
 }
