@@ -20,11 +20,3 @@ COPY ./docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["php-fpm"]
-
-# Для сборки нужно иметь vendor сразу после build,
-# а не ждать, пока все поставиться в скрипте ENTRYPOINT
-FROM develop AS test
-COPY composer.* ./
-RUN composer install --prefer-source --no-interaction --no-plugins --no-scripts
-COPY package* ./
-RUN npm install --only=production --no-audit && npm run build
