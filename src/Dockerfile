@@ -26,3 +26,5 @@ CMD ["php-fpm"]
 FROM develop AS test
 COPY composer.* ./
 RUN composer install --prefer-source --no-interaction --no-plugins --no-scripts
+COPY package* ./
+RUN npm install --only=production --no-audit && npm run build
