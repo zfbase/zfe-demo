@@ -6,7 +6,6 @@ services:
     image: macbre/sphinxsearch
     ports:
       - '9308:9306'
-    #user: '1000' # somebody from host machine to prevents messing up permission on /data/sphinx volume
     volumes:
       - './data/sphinx:/opt/sphinx/index:delegated'
       - './conf/sphinx.conf:/opt/sphinx/conf/sphinx.conf'
@@ -17,7 +16,7 @@ services:
     image: 'mysql:5.6'
     ports:
       - '3308:3306'
-    user: '1000' # somebody from host machine to prevents messing up permission on /data/mysql volume
+    user: 1000 # somebody from host machine to prevents messing up permission on /data/mysql volume
     volumes:
       - './conf/mysql/my.cnf:/etc/mysql/conf.d/z.cnf'
       - './conf/mysql/initial.sql:/docker-entrypoint-initdb.d/initial.sql'
