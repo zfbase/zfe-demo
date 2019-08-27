@@ -29,7 +29,7 @@ class AcceptanceTester extends \Codeception\Actor
      * @param string $user
      * @param string $pass
      */
-    public function login($user = 'codeception', $pass = 'topsecurity')
+    public function login($user = 'tester', $pass = 'topsecurity+')
     {
         $this->amOnPage('/');
         $this->seeElement('#login');

@@ -20,11 +20,11 @@ class Bootstrap extends ZFE_Bootstrap
     protected function getDoctrineConfigFromEnvVars()
     {
         $doctrine = [
-            'host' => 'DB_HOST',
-            'port' => 'DB_PORT',
-            'schema' => 'DB_DATABASE',
-            'username' => 'DB_USERNAME',
-            'password' => 'DB_PASSWORD',
+            'host' => 'MYSQL_HOST',
+            'port' => 'MYSQL_PORT',
+            'schema' => 'MYSQL_DATABASE',
+            'username' => 'MYSQL_USERNAME',
+            'password' => 'MYSQL_PASSWORD',
         ];
         $sphinx = [
             'host' => 'SPHINX_HOST',

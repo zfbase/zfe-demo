@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "983946097523406c53bf882a79fe6809",
@@ -933,12 +933,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zfbase/zfe.git",
-                "reference": "e4a9542eb91cb38df33b0409af35a5b86ca22095"
+                "reference": "dedf8c646c4acf152a6e543bd9d8e7021076158a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zfbase/zfe/zipball/e4a9542eb91cb38df33b0409af35a5b86ca22095",
-                "reference": "e4a9542eb91cb38df33b0409af35a5b86ca22095",
+                "url": "https://api.github.com/repos/zfbase/zfe/zipball/dedf8c646c4acf152a6e543bd9d8e7021076158a",
+                "reference": "dedf8c646c4acf152a6e543bd9d8e7021076158a",
                 "shasum": ""
             },
             "require": {
@@ -997,7 +997,7 @@
                 }
             ],
             "description": "ZFE – платформа для построения редакторских интерфейсов",
-            "time": "2019-08-15T12:17:08+00:00"
+            "time": "2019-08-26T12:45:40+00:00"
         }
     ],
     "packages-dev": [

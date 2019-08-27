@@ -4,6 +4,8 @@ services:
 
   sphinx:
     image: macbre/sphinxsearch
+    ports:
+      - '9308:9306'
     #user: '1000' # somebody from host machine to prevents messing up permission on /data/sphinx volume
     volumes:
       - './data/sphinx:/opt/sphinx/index:delegated'
@@ -13,42 +15,40 @@ services:
 
   mysql:
     image: 'mysql:5.6'
+    ports:
+      - '3308:3306'
     user: '1000' # somebody from host machine to prevents messing up permission on /data/mysql volume
     volumes:
-      - './conf/my.cnf:/etc/mysql/conf.d/z.cnf'
+      - './conf/mysql/my.cnf:/etc/mysql/conf.d/z.cnf'
+      - './conf/mysql/initial.sql:/docker-entrypoint-initdb.d/initial.sql'
       - './data/mysql:/var/lib/mysql:delegated'
-      - './src/assets/initial.sql:/docker-entrypoint-initdb.d/intial.sql'
-    environment:
-      - MYSQL_DATABASE=zfe
-      - MYSQL_USER=zfe
-      - MYSQL_PASSWORD=zfe
-      - MYSQL_ROOT_PASSWORD=toor
+    env_file:
+      - .env.mysql
     networks:
       - zfe
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
 
-  php:
+  phpfpm:
     depends_on:
       - mysql
       - sphinx
-    build: .
+    build:
+      context: ./src
     volumes:
       - './data/app:/var/www/data:delegated'
       - './src:/var/www/html:cached'
       - './conf/php.ini:/usr/local/etc/php/conf.d/extra.ini'
     environment:
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_USERNAME=zfe
-      - DB_PASSWORD=zfe
-      - DB_DATABASE=zfe
       - SPHINX_HOST=sphinx
       - SPHINX_PORT=9306
+    env_file:
+      - .env.mysql
     networks:
       - zfe
 
   web:
     depends_on:
-      - php
+      - phpfpm
     image: 'nginx:latest'
     ports:
       - '8000:80'

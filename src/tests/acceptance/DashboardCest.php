@@ -9,7 +9,7 @@ class DashboardCest
     // tests
     public function tryToIndex(AcceptanceTester $I)
     {
-        $I->login('codeception', 'topsecucity');
+        $I->login();
         $I->amOnPage('/');
         $I->dontSeePHPErrors();
         $I->see('Ваши последние изменения');
