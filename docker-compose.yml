@@ -8,7 +8,7 @@ services:
       - '9308:9306'
     volumes:
       - './data/sphinx:/opt/sphinx/index:delegated'
-      - './conf/sphinx.conf:/opt/sphinx/conf/sphinx.conf'
+      - './src/assets/sphinx/sphinx.conf:/opt/sphinx/conf/sphinx.conf'
     networks:
       - zfe
 
@@ -36,8 +36,9 @@ services:
     volumes:
       - './data/app:/var/www/data:delegated'
       - './src:/var/www/html:cached'
-      - './conf/php.ini:/usr/local/etc/php/conf.d/extra.ini'
+      - './conf/php.ini:/usr/local/etc/phpdock/conf.d/extra.ini'
     environment:
+      - APPLICATION_ENV=development
       - SPHINX_HOST=sphinx
       - SPHINX_PORT=9306
     env_file:
