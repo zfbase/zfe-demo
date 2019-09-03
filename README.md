@@ -17,9 +17,10 @@ docker-compose exec tests composer install --prefer-source --no-interaction --no
 docker-compose exec phpfpm npm run build
 ```
 
+## Приемочные тесты
 Чтобы прогнать приемочные тесты:
 ```bash
 ./tools/test.sh
 ```
 
-Но лучше доверить эту работу **TeamCity**!
+При выполнении каждый Cest запускается в своем окружении. Лучше доверить эту работу **TeamCity**!
