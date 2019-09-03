@@ -22,4 +22,4 @@ docker-compose exec phpfpm npm run build
 ./tools/test.sh
 ```
 
-**Прогон тестов удаляет все данные в data!**
+Но лучше доверить эту работу **TeamCity**!
