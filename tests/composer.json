@@ -1,0 +1,13 @@
+{
+    "name": "dezzpil/tests",
+    "type": "library",
+    "require": {
+        "codeception/codeception": "^3.1"
+    },
+    "authors": [
+        {
+            "name": "Nikita Orlov",
+            "email": "norlov@archive.systems"
+        }
+    ]
+}

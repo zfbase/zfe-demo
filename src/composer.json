@@ -15,9 +15,8 @@
             "role": "Developer"
         },
         {
-            "name": "Dmitriy Stepanov",
-            "email": "stepdi@gmail.com",
-            "role": "Developer"
+            "name": "Nikita Orlov",
+            "email": "norlov@archive.systems"
         }
     ],
     "minimum-stability": "dev",
@@ -29,15 +28,6 @@
     "require": {
         "php": "^7.1",
         "zfbase/zfe": "master"
-    },
-    "autoload": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "require-dev": {
-        "codeception/codeception": "~2.5.5",
-        "symfony/browser-kit": ">=2.7 <=4.2.4"
     },
     "config": {
         "discard-changes": true

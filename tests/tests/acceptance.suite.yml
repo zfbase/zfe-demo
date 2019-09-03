@@ -9,11 +9,11 @@ path: acceptance
 modules:
     enabled:
         - PhpBrowser:
-            url: http://web:80/
-        - Db:
-            dsn: 'mysql:host=%MYSQL_HOST%;dbname=%MYSQL_DATABASE%'
-            user: '%MYSQL_USER%'
-            password: '%MYSQL_PASSWORD%'
+            url: 'http://web'
+#        - Db:
+#            dsn: 'mysql:host=%MYSQL_HOST%;dbname=%MYSQL_DATABASE%'
+#            user: '%MYSQL_USER%'
+#            password: '%MYSQL_PASSWORD%'
             #dump: '_data/dump.sql'
             #cleanup: false # run populator before each test
             #populate: true # run populator before all test
