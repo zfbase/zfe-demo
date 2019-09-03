@@ -1,0 +1,1 @@
+Put dump.sql here before acceptance tests run
