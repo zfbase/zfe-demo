@@ -1,15 +1,37 @@
 #!/bin/bash
 
-set -e
+# создадим копию даты для тестов
+# для этого надо положить контейнеры, иначе данные будут "битыми"
+docker-compose down 2> /dev/null
+sudo rm -rf data_copy
+sudo cp -rp data data_copy
+sudo rm -rf data_copy/app/sessions/* data_copy/app/files/* data_copy/app/temp/* data_copy/app/logs/*
+
+# возвратить все как было
+function restore() {
+  sudo rm -rf data
+  sudo mv -f data_copy data
+}
+
+# берем каждый файл с набором тестов
 for cest in $(ls -A tests/tests/acceptance | sed 's:.php::g'); do
-  docker-compose stop sphinx mysql
+  # обновляем папку
+  sudo rm -rf data
+  sudo cp -rp data_copy data
 
-  sudo rm -rf data/mysql/*
-  sudo rm -rf data/sphinx/*
-  sudo rm -rf data/app/sessions/* data/app/files/* data/app/temp/* data/app/logs/*
-  docker-compose up -d sphinx mysql
+  # запускаем контейнеры
+  docker-compose up -d 2> /dev/null
+  # docker-compose ps
 
-  sleep 10 # костыль, ждем пока все контейнеры начнут работать
-  echo "Starting $cest"
-  docker-compose run --rm --no-deps tests vendor/bin/codecept run acceptance --fail-fast --debug $cest
+  sleep 5 # костыль, ждем пока все контейнеры начнут работать
+  # echo "Starting $cest"
+  docker-compose run --rm --no-deps tests vendor/bin/codecept run acceptance --fail-fast --debug --report $cest
+  rc=$?
+  docker-compose down 2> /dev/null
+  if [[ $rc -ne 0 ]]; then
+    restore
+    exit $rc
+  fi
 done
+
+restore
